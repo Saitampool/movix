@@ -51,6 +51,22 @@ function SearchResult() {
   return (
     <div className="searchResultsPage">
       {loading && <Spinner initial={true} />}
+      {!loading && (
+        <ContentWrapper>
+          {data?.results?.length > 0 ? (
+            <>
+              <div className="pageTitle">
+                {`Search ${
+                  data?.total_results > 1 ? "results" : "result"
+                } of '${query}'`}
+              </div>
+              {/* <InfiniteScroll></InfiniteScroll> */}
+            </>
+          ) : (
+            <span className="resultNotFound">Sorry, Results not found!</span>
+          )}
+        </ContentWrapper>
+      )}
     </div>
   );
 }
