@@ -6,7 +6,7 @@ import "./style.scss";
 
 import { fetchDataFromApi } from "../../utils/api";
 import ContentWrapper from "../../components/contentWrapper/ContentWrapper";
-// import MovieCard from "../../components/movieCard/MovieCard";
+import MovieCard from "../../components/movieCard/MovieCard";
 import Spinner from "../../components/spinner/Spinner";
 import noResults from "../../assets/no-results.png";
 
@@ -60,7 +60,20 @@ function SearchResult() {
                   data?.total_results > 1 ? "results" : "result"
                 } of '${query}'`}
               </div>
-              {/* <InfiniteScroll></InfiniteScroll> */}
+              <InfiniteScroll
+                className="content"
+                dataLength={data?.results?.length || []}
+                next={fetchNextPageData}
+                hasMore={pageNum <= data?.total_pages}
+                loader={<Spinner />}
+              >
+                {data?.results.map((item, index) => {
+                  if (item.media_type === "person") return;
+                  return (
+                    <MovieCard key={index} data={item} fromSearch={true} />
+                  );
+                })}
+              </InfiniteScroll>
             </>
           ) : (
             <span className="resultNotFound">Sorry, Results not found!</span>
