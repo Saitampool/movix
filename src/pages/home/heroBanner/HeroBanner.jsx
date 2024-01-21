@@ -21,9 +21,15 @@ function HeroBanner() {
     setBackground(bg);
   }, [data]);
 
-  const searchQueryHandler = (e) => {
-    if (e.key === "Enter" && query.length > 0) {
+  const performSearch = () => {
+    if (query.length > 0) {
       navigate(`search/${query}`);
+    }
+  };
+
+  const searchQueryHandler = (e) => {
+    if (e.key === "Enter") {
+      performSearch();
     }
   };
 
@@ -52,7 +58,7 @@ function HeroBanner() {
               }}
               onKeyUp={searchQueryHandler}
             />
-            <button>Seacrh</button>
+            <button onClick={performSearch}>Seacrh</button>
           </div>
         </div>
       </ContentWrapper>
