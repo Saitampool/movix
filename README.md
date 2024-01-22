@@ -18,7 +18,7 @@ MOVIX adalah sebuah website rekomendasi film yang dirancang untuk membantu menem
 
 ### Teknologi
 
-MovieSuggestor dibangun menggunakan teknologi :
+MOVIX dibuat menggunakan :
 
 - ReactJS, SCSS, Redux, dan API The Movie Database (TMDB)
 
